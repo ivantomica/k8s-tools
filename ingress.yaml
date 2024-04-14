@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tools
+  namespace: tools
+spec:
+  ingressClassName: haproxy
+  rules:
+  - host: tools.urb16.tomica.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: tools
+            port:
+              name: http

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: tools
+  name: tools
+  labels:
+    app: tools
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tools
+  template:
+    metadata:
+      labels:
+        app: tools
+    spec:
+      containers:
+        - image: ghcr.io/corentinth/it-tools:latest
+          name: tools
